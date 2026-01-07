@@ -22,42 +22,42 @@ Aplikasi ini dikembangkan sebagai **tugas Ujian Akhir Semester (UAS)** dan saat 
 
 ### 📝 Halaman Register
 <p align="center">
-  <img src="lib/screnshot/02_register.jpeg" width="300">
+  <img src="lib/screnshot/02_register.jpeg" width="200">
 </p>
 
 ### 🏠 Halaman Home
 <p align="center">
-  <img src="lib/screnshot/03_home.jpeg" width="300">
+  <img src="lib/screnshot/03_home.jpeg" width="200">
 </p>
 
 ### 📋 Daftar Laporan
 <p align="center">
-  <img src="lib/screnshot/04_list.jpeg" width="300">
+  <img src="lib/screnshot/04_list.jpeg" width="200">
 </p>
 
 ### 📋 Daftar Laporan with edit & delete option
 <p align="center">
-  <img src="lib/screnshot/05_list.jpeg" width="300">
+  <img src="lib/screnshot/05_list.jpeg" width="200">
 </p>
 
 ### 🗑️ Hapus Laporan
 <p align="center">
-  <img src="lib/screnshot/06_delete.jpeg" width="300">
+  <img src="lib/screnshot/06_delete.jpeg" width="200">
 </p>
 
 ### ➕ Tambah Laporan
 <p align="center">
-  <img src="lib/screnshot/07_tambah.jpeg" width="300">
+  <img src="lib/screnshot/07_tambah.jpeg" width="200">
 </p>
 
 ### ✏️ Edit Laporan
 <p align="center">
-  <img src="lib/screnshot/08_edit.jpeg" width="300">
+  <img src="lib/screnshot/08_edit.jpeg" width="200">
 </p>
 
 ### 🔍 Detail Laporan
 <p align="center">
-  <img src="lib/screnshot/09_detail.jpeg" width="300">
+  <img src="lib/screnshot/09_detail.jpeg" width="200">
 </p>
 
 ---
