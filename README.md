@@ -4,6 +4,11 @@ Aplikasi **Lapor Fasilitas** adalah aplikasi mobile berbasis **Flutter & Firebas
 
 Aplikasi ini dikembangkan sebagai **tugas Ujian Akhir Semester (UAS)** dan saat ini berfokus pada **peran user (pelapor)**.
 
+create By :
+- Komang Dio Aseh Arifianto (2301010053)
+- Jaqlien Enjelika Surya (2301010060)
+- Ni Made Artya Putri Andini Gunawan (2301010058)
+
 ---
 
 ## 🎯 Tujuan Aplikasi
