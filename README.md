@@ -171,7 +171,9 @@ Create By :
 
 Aplikasi ini dibuat untuk memenuhi kebutuhan **Tugas Ujian Akhir Semester (UAS)** dengan fokus pada:
 - Implementasi CRUD
+- Request HTTP
 - Integrasi Firebase
+- Penggunaan Fitur Camera
 - Penggunaan GPS & lokasi
 - Desain UI/UX yang sederhana dan profesional
 
