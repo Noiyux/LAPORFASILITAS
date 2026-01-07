@@ -17,7 +17,7 @@ Aplikasi ini dikembangkan sebagai **tugas Ujian Akhir Semester (UAS)** dan saat 
 
 ### 🔐 Halaman Login
 <p align="center">
-  <img src="lib/screnshot/01_login.jpeg" width="300">
+  <img src="lib/screnshot/01_login.jpeg" width="200">
 </p>
 
 ### 📝 Halaman Register
