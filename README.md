@@ -13,8 +13,6 @@ Aplikasi ini dikembangkan sebagai **tugas Ujian Akhir Semester (UAS)** dan saat 
 
 ---
 
----
-
 ## 🖼️ Screenshot Aplikasi
 
 ### 🔐 Halaman Login
