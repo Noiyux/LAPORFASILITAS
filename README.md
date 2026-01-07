@@ -74,6 +74,7 @@ Aplikasi ini dikembangkan sebagai **tugas Ujian Akhir Semester (UAS)** dan saat 
 - Alamat diperoleh melalui reverse geocoding
 - Pengguna tetap dapat mengedit alamat dan detail lokasi
 - Tidak menggunakan Google Maps API (gratis & open-source)
+- Preview peta menggunakan OpenStreetMap
 
 ---
 
@@ -92,7 +93,6 @@ Aplikasi ini dikembangkan sebagai **tugas Ujian Akhir Semester (UAS)** dan saat 
 
 - Penambahan role admin/petugas
 - Status laporan (Dikirim, Diproses, Selesai)
-- Preview peta menggunakan OpenStreetMap
 - Upload foto ke cloud storage
 - Notifikasi real-time
 - Filter & pencarian laporan
