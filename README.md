@@ -72,7 +72,7 @@ Aplikasi ini dikembangkan sebagai **tugas Ujian Akhir Semester (UAS)** dan saat 
 
 ### 🧩 Arsitektur Sistem & UML
 > **Link Softcopy Arsitektur Sistem & UML:**  
-> *()*
+> https://docs.google.com/document/d/1yx90VWVY7nMnnCfDed4U197sqnW0ou6_nJu4zDttr4o/edit?usp=sharing
 
 ---
 
