@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "655932622280",
+    "project_id": "laporfasilitas-bf2f9",
+    "storage_bucket": "laporfasilitas-bf2f9.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:655932622280:android:7d2301da4f773cf751ecfd",
+        "android_client_info": {
+          "package_name": "com.example.laporfasilitas"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrhASUsPCbm7RCcmd_lGJAHccjZKRARNY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
