@@ -175,7 +175,6 @@ Aplikasi ini dibuat untuk memenuhi kebutuhan **Tugas Ujian Akhir Semester (UAS)*
 - Integrasi Firebase
 - Penggunaan Fitur Camera
 - Penggunaan GPS & lokasi
-- Desain UI/UX yang sederhana dan profesional
 
 ---
 
