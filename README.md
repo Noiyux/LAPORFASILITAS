@@ -13,6 +13,20 @@ Aplikasi ini dikembangkan sebagai **tugas Ujian Akhir Semester (UAS)** dan saat 
 
 ---
 
+## 🔗 Link Desain & Dokumentasi
+
+### 🎨 Desain UI/UX (Figma)
+> **Link Figma:**  
+> *(isi link Figma di sini)*
+
+---
+
+### 🧩 Arsitektur Sistem & UML
+> **Link Softcopy Arsitektur Sistem & UML:**  
+> *(isi link UML / Google Drive / PDF di sini)*
+
+---
+
 ## ✨ Fitur Utama
 
 ### 🔐 Autentikasi
