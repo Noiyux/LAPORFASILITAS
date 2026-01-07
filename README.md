@@ -66,7 +66,7 @@ Aplikasi ini dikembangkan sebagai **tugas Ujian Akhir Semester (UAS)** dan saat 
 
 ### 🎨 Desain UI/UX (Figma)
 > **Link Figma:**  
-> *(isi link Figma di sini)*
+> https://www.figma.com/design/jCuIbd71eY68F1JvjF97ZT/UAS-PM?node-id=1-89&t=J7us8n1zcCBFrtgf-1
 
 ---
 
