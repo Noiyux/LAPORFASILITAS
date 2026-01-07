@@ -13,6 +13,16 @@ Aplikasi ini dikembangkan sebagai **tugas Ujian Akhir Semester (UAS)** dan saat 
 
 ---
 
+---
+
+## 🖼️ Screenshot Aplikasi
+
+### 🔐 Halaman Login
+![Login](screnshot/01_login.jpeg)
+
+
+---
+
 ## 🔗 Link Desain & Dokumentasi
 
 ### 🎨 Desain UI/UX (Figma)
