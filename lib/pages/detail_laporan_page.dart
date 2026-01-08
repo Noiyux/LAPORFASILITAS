@@ -11,18 +11,18 @@ import 'edit_laporan_page.dart';
 class DetailLaporanPage extends StatelessWidget {
   final Laporan laporan;
 
-  Color statusColor(String status) {
-  switch (status) {
-    case 'Diproses':
-      return Colors.orange;
-    case 'Selesai':
-      return Colors.green;
-    default:
-      return Colors.blue;
-  }
-}
-
   const DetailLaporanPage({super.key, required this.laporan});
+
+  Color statusColor(String status) {
+    switch (status) {
+      case 'Diproses':
+        return Colors.orange;
+      case 'Selesai':
+        return Colors.green;
+      default:
+        return Colors.blue;
+    }
+  }
 
   String formatTanggal(Timestamp timestamp) {
     return DateFormat('dd MMMM yyyy • HH:mm').format(timestamp.toDate());
@@ -36,6 +36,7 @@ class DetailLaporanPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Detail Laporan'),
+        centerTitle: true,
         actions: [
           IconButton(
             icon: const Icon(Icons.edit),
@@ -63,16 +64,33 @@ class DetailLaporanPage extends StatelessWidget {
 
             // ================= FOTO =================
             if (hasFoto)
-              Image.file(
-                File(laporan.fotoPath),
-                width: double.infinity,
-                height: 220,
-                fit: BoxFit.cover,
-                errorBuilder: (_, __, ___) => Container(
-                  height: 220,
-                  color: Colors.grey[300],
-                  child: const Icon(Icons.broken_image, size: 40),
-                ),
+              Stack(
+                children: [
+                  Image.file(
+                    File(laporan.fotoPath),
+                    width: double.infinity,
+                    height: 220,
+                    fit: BoxFit.cover,
+                    errorBuilder: (_, __, ___) => Container(
+                      height: 220,
+                      color: Colors.grey[300],
+                      child: const Icon(Icons.broken_image, size: 40),
+                    ),
+                  ),
+                  Container(
+                    height: 220,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.bottomCenter,
+                        end: Alignment.topCenter,
+                        colors: [
+                          Colors.black.withValues(alpha: 0.4),
+                          Colors.transparent,
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
 
             Padding(
@@ -81,55 +99,69 @@ class DetailLaporanPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
 
-                  // ================= JUDUL =================
-                  Text(
-                    laporan.judul,
-                    style: const TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-
-                  const SizedBox(height: 8),
-
-                  Chip(
-                    label: Text(
-                      laporan.status,
-                      style: TextStyle(
-                        color: statusColor(laporan.status),
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    backgroundColor: 
-                      statusColor(laporan.status).withValues(alpha: 0.15),
-                  ),
-
-
-                  // ================= META =================
+                  // ================= JUDUL + STATUS =================
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Icon(Icons.location_on, size: 16),
-                      const SizedBox(width: 4),
                       Expanded(
                         child: Text(
-                          laporan.lokasi,
-                          style: const TextStyle(color: Colors.grey),
+                          laporan.judul,
+                          style: const TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
+                      ),
+                      Chip(
+                        label: Text(
+                          laporan.status,
+                          style: TextStyle(
+                            color: statusColor(laporan.status),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        backgroundColor:
+                            statusColor(laporan.status).withValues(alpha: 0.15),
                       ),
                     ],
                   ),
 
-                  const SizedBox(height: 4),
+                  const SizedBox(height: 12),
 
-                  Row(
-                    children: [
-                      const Icon(Icons.calendar_today, size: 14),
-                      const SizedBox(width: 6),
-                      Text(
-                        formatTanggal(laporan.tanggal),
-                        style: const TextStyle(color: Colors.grey),
-                      ),
-                    ],
+                  // ================= META INFO =================
+                  Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade100,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            const Icon(Icons.location_on, size: 16),
+                            const SizedBox(width: 6),
+                            Expanded(
+                              child: Text(
+                                laporan.lokasi,
+                                style: const TextStyle(color: Colors.grey),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 6),
+                        Row(
+                          children: [
+                            const Icon(Icons.calendar_today, size: 14),
+                            const SizedBox(width: 6),
+                            Text(
+                              formatTanggal(laporan.tanggal),
+                              style: const TextStyle(color: Colors.grey),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
 
                   const SizedBox(height: 20),
@@ -141,7 +173,7 @@ class DetailLaporanPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.all(12),
+                      padding: const EdgeInsets.all(14),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -152,25 +184,35 @@ class DetailLaporanPage extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 8),
-                          Text(laporan.deskripsi),
+                          Text(
+                            laporan.deskripsi,
+                            style: const TextStyle(height: 1.4),
+                          ),
                         ],
                       ),
                     ),
                   ),
 
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 24),
 
-                  // ================= MAP PREVIEW =================
-                  const Text(
-                    'Lokasi Laporan',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  // ================= MAP TITLE =================
+                  Row(
+                    children: const [
+                      Icon(Icons.map, size: 18),
+                      SizedBox(width: 6),
+                      Text(
+                        'Lokasi Laporan',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
                   ),
 
                   const SizedBox(height: 8),
 
+                  // ================= MAP =================
                   ClipRRect(
                     borderRadius: BorderRadius.circular(12),
                     child: SizedBox(
@@ -206,14 +248,15 @@ class DetailLaporanPage extends StatelessWidget {
                     ),
                   ),
 
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 12),
 
-                  Text(
-                    'Lat: ${laporan.latitude}, Lng: ${laporan.longitude}',
-                    style: const TextStyle(
-                      fontSize: 12,
-                      color: Colors.grey,
-                    ),
+                  // ================= KOORDINAT =================
+                  Wrap(
+                    spacing: 8,
+                    children: [
+                      Chip(label: Text('Lat: ${laporan.latitude}')),
+                      Chip(label: Text('Lng: ${laporan.longitude}')),
+                    ],
                   ),
                 ],
               ),
