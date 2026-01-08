@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:intl/intl.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../models/laporan_model.dart';
 import 'edit_laporan_page.dart';
@@ -26,6 +27,17 @@ class DetailLaporanPage extends StatelessWidget {
 
   String formatTanggal(Timestamp timestamp) {
     return DateFormat('dd MMMM yyyy • HH:mm').format(timestamp.toDate());
+  }
+
+  /// ================= BUKA PETA EKSTERNAL =================
+  Future<void> bukaPetaEksternal() async {
+    final uri = Uri.parse(
+      'https://www.openstreetmap.org/?mlat=${laporan.latitude}&mlon=${laporan.longitude}&zoom=18',
+    );
+
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
   }
 
   @override
@@ -62,35 +74,52 @@ class DetailLaporanPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
 
-            // ================= FOTO =================
+            // ================= FOTO (TAP → FULLSCREEN) =================
             if (hasFoto)
-              Stack(
-                children: [
-                  Image.file(
-                    File(laporan.fotoPath),
-                    width: double.infinity,
-                    height: 220,
-                    fit: BoxFit.cover,
-                    errorBuilder: (_, __, ___) => Container(
-                      height: 220,
-                      color: Colors.grey[300],
-                      child: const Icon(Icons.broken_image, size: 40),
-                    ),
-                  ),
-                  Container(
-                    height: 220,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.bottomCenter,
-                        end: Alignment.topCenter,
-                        colors: [
-                          Colors.black.withValues(alpha: 0.4),
-                          Colors.transparent,
-                        ],
+              GestureDetector(
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (_) => Dialog(
+                      backgroundColor: Colors.black,
+                      insetPadding: EdgeInsets.zero,
+                      child: InteractiveViewer(
+                        child: Image.file(
+                          File(laporan.fotoPath),
+                          fit: BoxFit.contain,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  );
+                },
+                child: Stack(
+                  children: [
+                    Image.file(
+                      File(laporan.fotoPath),
+                      width: double.infinity,
+                      height: 220,
+                      fit: BoxFit.cover,
+                      errorBuilder: (_, __, ___) => Container(
+                        height: 220,
+                        color: Colors.grey[300],
+                        child: const Icon(Icons.broken_image, size: 40),
+                      ),
+                    ),
+                    Container(
+                      height: 220,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.bottomCenter,
+                          end: Alignment.topCenter,
+                          colors: [
+                            Colors.black.withValues(alpha: 0.4),
+                            Colors.transparent,
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
 
             Padding(
@@ -179,9 +208,7 @@ class DetailLaporanPage extends StatelessWidget {
                         children: [
                           const Text(
                             'Deskripsi',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
+                            style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 8),
                           Text(
@@ -212,7 +239,7 @@ class DetailLaporanPage extends StatelessWidget {
 
                   const SizedBox(height: 8),
 
-                  // ================= MAP =================
+                  // ================= MAP (INTERAKTIF) =================
                   ClipRRect(
                     borderRadius: BorderRadius.circular(12),
                     child: SizedBox(
@@ -221,6 +248,9 @@ class DetailLaporanPage extends StatelessWidget {
                         options: MapOptions(
                           initialCenter: lokasi,
                           initialZoom: 16,
+                          interactionOptions: const InteractionOptions(
+                            flags: InteractiveFlag.all,
+                          ),
                         ),
                         children: [
                           TileLayer(
@@ -248,7 +278,19 @@ class DetailLaporanPage extends StatelessWidget {
                     ),
                   ),
 
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 10),
+
+                  // ================= BUKA PETA EKSTERNAL =================
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton.icon(
+                      onPressed: bukaPetaEksternal,
+                      icon: const Icon(Icons.open_in_new),
+                      label: const Text('Buka di Peta'),
+                    ),
+                  ),
+
+                  const SizedBox(height: 8),
 
                   // ================= KOORDINAT =================
                   Wrap(
