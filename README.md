@@ -52,12 +52,12 @@ Create By :
 
 ### ➕ Tambah Laporan
 <p align="center">
-  <img src="lib/screnshot/07_tambah.jpeg" width="200">
+  <img src="lib/screnshot/07_tambah.png" width="200">
 </p>
 
 ### ✏️ Edit Laporan
 <p align="center">
-  <img src="lib/screnshot/08_edit.jpeg" width="200">
+  <img src="lib/screnshot/08_edit.png" width="200">
 </p>
 
 ### 🔍 Detail Laporan
