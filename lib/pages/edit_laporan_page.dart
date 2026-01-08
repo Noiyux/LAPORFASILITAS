@@ -128,151 +128,168 @@ class _EditLaporanPageState extends State<EditLaporanPage> {
   }
 
   // ================= UI =================
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Edit Laporan'),
-      ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Form(
-          key: _formKey,
-          child: Card(
-            elevation: 2,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+ @override
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      title: const Text('Edit Laporan'),
+      centerTitle: true,
+    ),
+    body: SingleChildScrollView(
+      padding: const EdgeInsets.all(16),
+      child: Form(
+        key: _formKey,
+        child: Card(
+          elevation: 3,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
 
-                  // ===== JUDUL =====
-                  TextFormField(
-                    controller: _judulController,
-                    decoration: const InputDecoration(
-                      labelText: 'Judul Laporan',
-                      helperText: 'Nama Laporan atau Benda yang dilaporkan',
-                    ),
-                    validator: (v) =>
-                        v == null || v.isEmpty ? 'Judul wajib diisi' : null,
+                // ===== JUDUL =====
+                TextFormField(
+                  controller: _judulController,
+                  decoration: const InputDecoration(
+                    labelText: 'Judul Laporan',
+                    hintText: 'Nama laporan atau benda yang dilaporkan',
+                    isDense: true,
                   ),
+                  validator: (v) =>
+                      v == null || v.isEmpty ? 'Judul wajib diisi' : null,
+                ),
 
-                  const SizedBox(height: 12),
+                const SizedBox(height: 16),
 
-                  // ===== DESKRIPSI =====
-                  TextFormField(
-                    controller: _deskripsiController,
-                    decoration: const InputDecoration(
-                      labelText: 'Deskripsi',
-                      helperText: 'Jelaskan Secara Detail Kerusakan yg terjadi',
-                    ),
-                    maxLines: 3,
-                    validator: (v) =>
-                        v == null || v.isEmpty ? 'Deskripsi wajib diisi' : null,
+                // ===== DESKRIPSI =====
+                TextFormField(
+                  controller: _deskripsiController,
+                  minLines: 3,
+                  maxLines: 5,
+                  textAlignVertical: TextAlignVertical.top,
+                  decoration: const InputDecoration(
+                    labelText: 'Deskripsi',
+                    hintText: 'Jelaskan secara detail kerusakan yang terjadi',
+                    alignLabelWithHint: true,
+                    isDense: true,
                   ),
+                  validator: (v) =>
+                      v == null || v.isEmpty ? 'Deskripsi wajib diisi' : null,
+                ),
 
-                  const SizedBox(height: 12),
+                const SizedBox(height: 16),
 
-                  // ===== ALAMAT OTOMATIS =====
-                  TextFormField(
-                    controller: _lokasiController,
-                    decoration: const InputDecoration(
-                      labelText: 'Alamat Lokasi',
-                      prefixIcon: Icon(Icons.location_on),
-                      helperText: 
-                          'Alamat otomatis diisi berdasarkan koordinat yang diambil dan dapat diedit secara manual',
-                          helperMaxLines: 3,
-                    ),
-                    validator: (v) =>
-                        v == null || v.isEmpty ? 'Alamat wajib diisi' : null,
+                // ===== ALAMAT =====
+                TextFormField(
+                  controller: _lokasiController,
+                  minLines: 2,
+                  maxLines: 3,
+                  decoration: const InputDecoration(
+                    labelText: 'Alamat Lokasi',
+                    hintText:
+                        'Alamat otomatis diisi berdasarkan koordinat dan dapat diedit manual',
+                    prefixIcon: Icon(Icons.location_on),
+                    alignLabelWithHint: true,
+                    isDense: true,
                   ),
+                  validator: (v) =>
+                      v == null || v.isEmpty ? 'Alamat wajib diisi' : null,
+                ),
 
-                  const SizedBox(height: 12),
+                const SizedBox(height: 16),
 
-                  // ===== DETAIL MANUAL =====
-                  TextFormField(
-                    controller: _detailLokasiController,
-                    decoration: const InputDecoration(
-                      labelText: 'Detail Lokasi',
-                      helperText:
-                          'Contoh: depan gerbang sekolah, lantai 2 gedung A',
-                    ),
-                    validator: (v) =>
-                        v == null || v.isEmpty ? 'Detail lokasi wajib diisi' : null,
+                // ===== DETAIL LOKASI =====
+                TextFormField(
+                  controller: _detailLokasiController,
+                  decoration: const InputDecoration(
+                    labelText: 'Detail Lokasi',
+                    hintText:
+                        'Contoh: depan gerbang sekolah, lantai 2 gedung A',
+                    isDense: true,
                   ),
+                  validator: (v) =>
+                      v == null || v.isEmpty ? 'Detail lokasi wajib diisi' : null,
+                ),
 
-                  const SizedBox(height: 20),
+                const SizedBox(height: 24),
 
-                  // ===== KOORDINAT =====
-                  const Text(
-                    'Koordinat Lokasi',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                // ===== KOORDINAT =====
+                const Text(
+                  'Koordinat Lokasi',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
                   ),
-                  const SizedBox(height: 8),
+                ),
+                const SizedBox(height: 8),
 
-                  Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade100,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Latitude  : ${latitude ?? '-'}'),
-                        Text('Longitude : ${longitude ?? '-'}'),
-                      ],
-                    ),
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade100,
+                    borderRadius: BorderRadius.circular(10),
                   ),
-
-                  const SizedBox(height: 12),
-
-                  // ===== AMBIL LOKASI =====
-                  Center(
-                    child: OutlinedButton.icon(
-                      icon: isGettingLocation
-                          ? const SizedBox(
-                              width: 16,
-                              height: 16,
-                              child:
-                                  CircularProgressIndicator(strokeWidth: 2),
-                            )
-                          : const Icon(Icons.my_location),
-                      label: const Text('Perbarui Lokasi Sekarang'),
-                      onPressed: isGettingLocation ? null : ambilLokasiBaru,
-                    ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Latitude  : ${latitude ?? '-'}'),
+                      const SizedBox(height: 4),
+                      Text('Longitude : ${longitude ?? '-'}'),
+                    ],
                   ),
+                ),
 
-                  const SizedBox(height: 24),
+                const SizedBox(height: 12),
 
-                  // ===== SIMPAN =====
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed:
-                          (isSaving || isGettingLocation) ? null : simpanPerubahan,
-                      child: isSaving
-                          ? const SizedBox(
-                              width: 20,
-                              height: 20,
-                              child: CircularProgressIndicator(
-                                color: Colors.white,
-                                strokeWidth: 2,
-                              ),
-                            )
-                          : const Text('Simpan Perubahan'),
-                    ),
+                // ===== AMBIL LOKASI =====
+                Center(
+                  child: OutlinedButton.icon(
+                    icon: isGettingLocation
+                        ? const SizedBox(
+                            width: 16,
+                            height: 16,
+                            child: CircularProgressIndicator(strokeWidth: 2),
+                          )
+                        : const Icon(Icons.my_location),
+                    label: const Text('Perbarui Lokasi Sekarang'),
+                    onPressed: isGettingLocation ? null : ambilLokasiBaru,
                   ),
-                ],
-              ),
+                ),
+
+                const SizedBox(height: 28),
+
+                // ===== SIMPAN =====
+                SizedBox(
+                  width: double.infinity,
+                  height: 48,
+                  child: ElevatedButton(
+                    onPressed:
+                        (isSaving || isGettingLocation) ? null : simpanPerubahan,
+                    child: isSaving
+                        ? const SizedBox(
+                            width: 22,
+                            height: 22,
+                            child: CircularProgressIndicator(
+                              color: Colors.white,
+                              strokeWidth: 2,
+                            ),
+                          )
+                        : const Text(
+                            'Simpan Perubahan',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
       ),
-    );
-  }
+    ),
+  );
+}
 }
