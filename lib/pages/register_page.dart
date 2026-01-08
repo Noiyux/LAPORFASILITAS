@@ -30,7 +30,7 @@ class _RegisterPageState extends State<RegisterPage> {
       );
 
       if (!mounted) return;
-      Navigator.pop(context); // kembali ke login → auto masuk home
+      Navigator.pop(context); 
     } on FirebaseAuthException catch (e) {
       String message = 'Registrasi gagal';
 

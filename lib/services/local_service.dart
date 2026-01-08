@@ -19,7 +19,6 @@ class LocalService {
         'lokasi': e.lokasi,
         'latitude': e.latitude,
         'longitude': e.longitude,
-        // 🔥 Timestamp → String
         'tanggal': e.tanggal.toDate().toIso8601String(),
         'fotoPath': e.fotoPath,
       };

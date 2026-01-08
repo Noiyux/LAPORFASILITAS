@@ -16,7 +16,7 @@ class _LoginPageState extends State<LoginPage> {
   final _passwordController = TextEditingController();
 
   bool isLoading = false;
-  bool isLogin = true; // toggle login / register
+  bool isLogin = true; 
 
   Future<void> submit() async {
     if (!_formKey.currentState!.validate()) return;
