@@ -31,12 +31,21 @@ class DetailLaporanPage extends StatelessWidget {
 
   /// ================= BUKA PETA EKSTERNAL =================
   Future<void> bukaPetaEksternal() async {
-    final uri = Uri.parse(
-      'https://www.openstreetmap.org/?mlat=${laporan.latitude}&mlon=${laporan.longitude}&zoom=18',
+    final lat = laporan.latitude;
+    final lng = laporan.longitude;
+
+    final googleMapsUri = Uri.parse(
+      'https://www.google.com/maps/search/?api=1&query=$lat,$lng',
     );
 
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    if (await canLaunchUrl(googleMapsUri)) {
+      await launchUrl(
+        googleMapsUri,
+        mode: LaunchMode.externalApplication,
+      );
+    } else {
+      // fallback (jarang terjadi)
+      throw 'Tidak dapat membuka peta';
     }
   }
 
