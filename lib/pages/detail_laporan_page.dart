@@ -44,7 +44,6 @@ class DetailLaporanPage extends StatelessWidget {
         mode: LaunchMode.externalApplication,
       );
     } else {
-      // fallback (jarang terjadi)
       throw 'Tidak dapat membuka peta';
     }
   }
